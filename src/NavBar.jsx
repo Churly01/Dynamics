@@ -1,3 +1,6 @@
+import { NavLink } from 'react-router-dom';
+import './index.css';
+
 function Navbar() {
   const navbarStyle = {
     position: 'sticky',
@@ -12,9 +15,10 @@ function Navbar() {
   const navbarSectionStyle = {
     flex: 0.25,
     display: 'flex',
+    fontSize: '1.5em',
+    color: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    border: '1px solid #fff',
   };
 
   const navBarTitle = {
@@ -22,24 +26,23 @@ function Navbar() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize:'2em',
-    border: '1px solid #fff',
+    fontSize: '2em',
   };
 
   return (
     <div style={navbarStyle}>
-      <div style={{
+      <NavLink className="linkButton" to="/" style={{
         ...navbarSectionStyle,
         borderLeft: 'none',
       }}>
         Dinamica
-      </div>
-      <div style={navBarTitle}>
+      </NavLink>
+      <NavLink to="/" className="linkButton" style={navBarTitle}>
         Survival On The Moon
-      </div>
-      <div style={navbarSectionStyle}>
-        Sobre Nosotros
-      </div>
+      </NavLink>
+      <NavLink to="/about_us" className="linkButton" style={navbarSectionStyle}>
+        About us
+      </NavLink>
     </div>
   );
 }

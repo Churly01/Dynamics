@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { usePositionReorder } from "./use-position-reorder";
 import { useMeasurePosition } from "./use-measure-position";
+import Papa from 'papaparse';
 
 
 function Item({
@@ -57,22 +58,39 @@ function Item({
   );
 }
 
-export default function DraggableList({
-  items,
-}) {
+export default function DraggableList({ items }) {
   const [order, updatePosition, updateOrder] = usePositionReorder(Object.values(items));
-  console.log(order);
+
+  const exportToCSV = () => {
+    // Crear el array de objetos a exportar
+    const data = order.map((element, i) => ({ Name: element, Position: i + 1 }));
+
+    // Convertir a CSV y descargar
+    const csv = Papa.unparse(data);
+    const csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+    const url = URL.createObjectURL(csvData);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'export.csv');
+    link.click();
+  };
+
   return (
-    <ul style={{ listStyleType:'none', width:'60%' }}>
-    {order.map((element, i) => (
-      <Item
-        key={element}
-        height={30}
-        i={i}
-        updatePosition={updatePosition}
-        updateOrder={updateOrder}
-        element={element}
-      />
-    ))}
-  </ul>);
+    <>
+      <ul style={{ listStyleType: 'none', width: '60%' }}>
+        {order.map((element, i) => (
+          <Item
+            key={element}
+            height={30}
+            i={i}
+            updatePosition={updatePosition}
+            updateOrder={updateOrder}
+            element={element}
+          />
+        ))}
+      </ul>
+      <button onClick={exportToCSV}>Export to CSV file</button>
+    </>
+  );
 }

@@ -21,7 +21,7 @@ const itemsObject = {
 const LocalDynamic = () => {
   return(
     <>
-      <h1>Local Dynamic</h1>
+      <h1 style={{margin:'0.25em'}}>Local Dynamic</h1>
       <div style={{ flexDirection:'column',display: 'flex', alignItems: 'center' }}>
         <DraggableList items={itemsObject} />
       </div>

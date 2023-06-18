@@ -55,3 +55,22 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.linkButton {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 200em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+  cursor: pointer;
+}
+.linkButton:hover {
+  border-color: #646cff
+
+}
+.linkButton:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
