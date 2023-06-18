@@ -26,7 +26,6 @@ function Navbar() {
     border: '1px solid #fff',
   };
 
-
   return (
     <div style={navbarStyle}>
       <div style={{
@@ -41,7 +40,6 @@ function Navbar() {
       <div style={navbarSectionStyle}>
         Sobre Nosotros
       </div>
-
     </div>
   );
 }
